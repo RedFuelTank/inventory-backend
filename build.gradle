@@ -21,6 +21,9 @@ dependencies {
 
     // Spring
     implementation "org.springframework:spring-webmvc:$springFrameworkVersion"
+    implementation "org.springframework.security:spring-security-config:$springFrameworkVersion"
+    implementation "org.springframework.security:spring-security-web:$springFrameworkVersion"
+
 
     // Jackson
     implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
