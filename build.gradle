@@ -10,6 +10,7 @@ repositories {
 }
 def jupiterJUnitVersion = "5.8.1"
 def springFrameworkVersion = "6.0.4"
+def jacksonVersion = "2.14.1"
 
 dependencies {
     // Jupiter
@@ -18,6 +19,9 @@ dependencies {
 
     // Spring
     implementation "org.springframework:spring-webmvc:$springFrameworkVersion"
+
+    // Jackson
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
 }
 
 test {
