@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+def jupiterJUnitVersion = "5.8.1"
+
+dependencies {
+    // Jupiter
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterJUnitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiterJUnitVersion"
+}
+
+test {
+    useJUnitPlatform()
+}
