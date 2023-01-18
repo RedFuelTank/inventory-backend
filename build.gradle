@@ -12,6 +12,7 @@ repositories {
 }
 def jupiterJUnitVersion = "5.8.1"
 def springFrameworkVersion = "6.0.4"
+def springSecurityVersion = "6.0.1"
 def jacksonVersion = "2.14.1"
 
 dependencies {
@@ -21,8 +22,9 @@ dependencies {
 
     // Spring
     implementation "org.springframework:spring-webmvc:$springFrameworkVersion"
-    implementation "org.springframework.security:spring-security-config:$springFrameworkVersion"
-    implementation "org.springframework.security:spring-security-web:$springFrameworkVersion"
+
+    implementation "org.springframework.security:spring-security-config:$springSecurityVersion"
+    implementation "org.springframework.security:spring-security-web:$springSecurityVersion"
 
 
     // Jackson
