@@ -1,11 +1,13 @@
 import config.MvcConfig;
+import config.security.SecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MvcDispatcherInit extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{
-                MvcConfig.class
+                MvcConfig.class,
+                SecurityConfig.class
         };
     }
 
