@@ -9,11 +9,16 @@ repositories {
     mavenCentral()
 }
 def jupiterJUnitVersion = "5.8.1"
+def springFrameworkVersion = "6.0.4"
 
 dependencies {
     // Jupiter
     testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterJUnitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiterJUnitVersion"
+
+    // Spring
+    implementation "org.springframework:spring-core:$springFrameworkVersion"
+    implementation "org.springframework:spring-webmvc:$springFrameworkVersion"
 }
 
 test {
