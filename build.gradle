@@ -17,7 +17,6 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiterJUnitVersion"
 
     // Spring
-    implementation "org.springframework:spring-core:$springFrameworkVersion"
     implementation "org.springframework:spring-webmvc:$springFrameworkVersion"
 }
 
