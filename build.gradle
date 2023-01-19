@@ -26,6 +26,7 @@ dependencies {
 
     // Spring
     implementation "org.springframework:spring-webmvc:$springFrameworkVersion"
+    implementation "org.springframework:spring-orm:$springFrameworkVersion"
 
     implementation "org.springframework.security:spring-security-config:$springSecurityVersion"
     implementation "org.springframework.security:spring-security-web:$springSecurityVersion"
