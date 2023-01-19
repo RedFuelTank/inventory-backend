@@ -10,11 +10,13 @@ repositories {
     mavenCentral()
     maven { url "https://repo.spring.io/milestone/" }
 }
+
 def jupiterJUnitVersion = "5.8.1"
 def springFrameworkVersion = "6.0.4"
 def springSecurityVersion = "6.0.1"
 def jacksonVersion = "2.14.1"
 def lombokVersion = "1.18.24"
+def hibernateJpaVersion = "6.1.6.Final"
 
 dependencies {
     // Jupiter
@@ -33,6 +35,9 @@ dependencies {
     // Lombok
     compileOnly "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+    // JPA
+    implementation "org.hibernate:hibernate-core:$hibernateJpaVersion"
 }
 
 test {
