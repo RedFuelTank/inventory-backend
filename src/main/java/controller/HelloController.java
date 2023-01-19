@@ -12,13 +12,13 @@ public class HelloController {
     }
 
     @GetMapping("/user/hello")
-    @Secured("ROLE_USER")
+    @Secured("USER")
     public String helloUser() {
         return "Hello, user!";
     }
 
     @GetMapping("/admin/hello")
-    @Secured("ROLE_ADMIN")
+    @Secured("ADMIN")
     public String helloAdmin() {
         return "Hello, admin!";
     }
