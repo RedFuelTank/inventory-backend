@@ -17,6 +17,9 @@
             <column name="enabled" type="boolean">
                 <constraints nullable="false"/>
             </column>
+            <column name="credit" type="double">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <createTable tableName="authorities">
             <column name="username" type="varchar(50)">
@@ -33,10 +36,11 @@
             <column name="username" value="user"/>
             <column name="password" value="$2a$10$rDhr28yT2X26mqQVytCJUOti9k6Ry16i3HSWM.vLZ8zMQQl1SqyO2"/>
             <column name="enabled" value="true"/>
+            <column name="credit" value="0.0"/>
         </insert>
         <insert tableName="Authorities">
             <column name="username" value="user"/>
-            <column name="authority" value="ROLE_USER"/>
+            <column name="authority" value="USER"/>
         </insert>
     </changeSet>
 
@@ -45,10 +49,11 @@
             <column name="username" value="admin"/>
             <column name="password" value="$2a$10$piVu2FK65CZJz8GqgFVjxuer8N9dlxpP9kgKr9uiN6eD8hKE4Amhi"/>
             <column name="enabled" value="true"/>
+            <column name="credit" value="1.0"/>
         </insert>
         <insert tableName="Authorities">
             <column name="username" value="admin"/>
-            <column name="authority" value="ROLE_ADMIN"/>
+            <column name="authority" value="ADMIN"/>
         </insert>
     </changeSet>
 
@@ -57,10 +62,11 @@
             <column name="username" value="netgroup"/>
             <column name="password" value="$2a$10$zXV6fycDMHY3JJXIwl/47u0N5rdEPsTmMXmB3Cl1o6qcv0Ovztgpi"/>
             <column name="enabled" value="true"/>
+            <column name="credit" value="2.5"/>
         </insert>
         <insert tableName="Authorities">
             <column name="username" value="netgroup"/>
-            <column name="authority" value="ROLE_USER"/>
+            <column name="authority" value="USER"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
