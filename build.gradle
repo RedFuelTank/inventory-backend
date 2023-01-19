@@ -18,6 +18,7 @@ def jacksonVersion = "2.14.1"
 def lombokVersion = "1.18.24"
 def hibernateJpaVersion = "6.1.6.Final"
 def hsqldbDriverVersion = '2.7.1'
+def liquibaseVersion = "4.19.0"
 
 dependencies {
     // Jupiter
@@ -43,6 +44,9 @@ dependencies {
 
     // JDBC Driver
     implementation "org.hsqldb:hsqldb:$hsqldbDriverVersion"
+
+    // Liquibase
+    implementation "org.liquibase:liquibase-core:$liquibaseVersion"
 }
 
 test {
