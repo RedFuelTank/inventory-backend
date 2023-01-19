@@ -1,3 +1,4 @@
+import config.DbConfig;
 import config.MvcConfig;
 import config.security.SecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -7,7 +8,8 @@ public class MvcDispatcherInit extends AbstractAnnotationConfigDispatcherServlet
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{
                 MvcConfig.class,
-                SecurityConfig.class
+                SecurityConfig.class,
+                DbConfig.class
         };
     }
 

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class ExceptionAdvice {
-    @ExceptionHandler
+    @ExceptionHandler(Exception.class)
     public String onException() {
         return "internal error!";
     }
