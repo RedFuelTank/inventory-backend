@@ -14,6 +14,7 @@ def jupiterJUnitVersion = "5.8.1"
 def springFrameworkVersion = "6.0.4"
 def springSecurityVersion = "6.0.1"
 def jacksonVersion = "2.14.1"
+def lombokVersion = "1.18.24"
 
 dependencies {
     // Jupiter
@@ -26,9 +27,12 @@ dependencies {
     implementation "org.springframework.security:spring-security-config:$springSecurityVersion"
     implementation "org.springframework.security:spring-security-web:$springSecurityVersion"
 
-
     // Jackson
     implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+
+    // Lombok
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
 }
 
 test {
