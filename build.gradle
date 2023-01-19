@@ -17,6 +17,7 @@ def springSecurityVersion = "6.0.1"
 def jacksonVersion = "2.14.1"
 def lombokVersion = "1.18.24"
 def hibernateJpaVersion = "6.1.6.Final"
+def hsqldbDriverVersion = '2.7.1'
 
 dependencies {
     // Jupiter
@@ -38,6 +39,9 @@ dependencies {
 
     // JPA
     implementation "org.hibernate:hibernate-core:$hibernateJpaVersion"
+
+    // JDBC Driver
+    implementation "org.hsqldb:hsqldb:$hsqldbDriverVersion"
 }
 
 test {
