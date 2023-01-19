@@ -22,6 +22,14 @@ public class DbConfig {
     private String liquibaseChangelogPath;
 
     @Bean
+    public SpringLiquibase liquibase(DataSource dataSource) {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog(liquibaseChangelogPath);
+        liquibase.setDataSource(dataSource);
+        return liquibase;
+    }
+
+    @Bean
     public EntityManagerFactory entityManagerFactory(@Qualifier("dialect") String dialect, DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 
@@ -37,19 +45,11 @@ public class DbConfig {
     private Properties additionalProperties(String dialect) {
         Properties properties = new Properties();
 
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         properties.setProperty("hibernate.dialect", dialect);
         properties.setProperty("hibernate.show_sql", "false");
         properties.setProperty("hibernate.format_sql", "true");
 
         return properties;
-    }
-
-    @Bean
-    public SpringLiquibase liquibase(DataSource dataSource) {
-        SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog(liquibaseChangelogPath);
-        liquibase.setDataSource(dataSource);
-        return liquibase;
     }
 }
