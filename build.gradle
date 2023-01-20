@@ -19,6 +19,7 @@ def lombokVersion = "1.18.24"
 def hibernateJpaVersion = "6.1.6.Final"
 def hsqldbDriverVersion = '2.7.1'
 def liquibaseVersion = "4.19.0"
+def springDataJpaVersion = "3.0.1"
 
 dependencies {
     // Jupiter
@@ -31,6 +32,8 @@ dependencies {
 
     implementation "org.springframework.security:spring-security-config:$springSecurityVersion"
     implementation "org.springframework.security:spring-security-web:$springSecurityVersion"
+
+    implementation "org.springframework.data:spring-data-jpa:$springDataJpaVersion"
 
     // Jackson
     implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
