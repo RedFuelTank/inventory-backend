@@ -5,9 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class FileDto extends EntityDto {
+public class ItemDto extends EntityDto {
     private String date = "Today";
-    public FileDto(String name) {
+    public ItemDto(String name) {
         super(EntityType.FILE, name);
     }
 }
