@@ -20,6 +20,8 @@ def hibernateJpaVersion = "6.1.6.Final"
 def hsqldbDriverVersion = '2.7.1'
 def liquibaseVersion = "4.19.0"
 def springDataJpaVersion = "3.0.1"
+def log4jVersion = "2.19.0"
+
 
 dependencies {
     // Jupiter
@@ -50,6 +52,11 @@ dependencies {
 
     // Liquibase
     implementation "org.liquibase:liquibase-core:$liquibaseVersion"
+
+    // Log4J
+    implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
+    implementation "org.apache.logging.log4j:log4j-api:$log4jVersion"
+
 }
 
 test {
