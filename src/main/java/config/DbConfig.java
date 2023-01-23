@@ -22,6 +22,7 @@ public class DbConfig {
     public SpringLiquibase liquibase(DataSource dataSource) {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setChangeLog(liquibaseChangelogPath);
+        liquibase.setClearCheckSums(true);
         liquibase.setDataSource(dataSource);
         return liquibase;
     }
@@ -47,6 +48,7 @@ public class DbConfig {
         properties.setProperty("hibernate.dialect", dialect);
         properties.setProperty("hibernate.show_sql", "false");
         properties.setProperty("hibernate.format_sql", "true");
+        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
 
         return properties;
     }
