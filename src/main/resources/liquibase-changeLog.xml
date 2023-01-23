@@ -69,4 +69,38 @@
             <column name="authority" value="USER"/>
         </insert>
     </changeSet>
+
+    <changeSet id="V5__CREATE_DIRECTORY_TABLE" author="redfueltank">
+        <createTable tableName="directory">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="upperId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints foreignKeyName="fk_directory_username" references="users(username)" deleteCascade="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="V6__CREATE_ITEM_TABLE" author="redfueltank">
+        <createTable tableName="item">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="directoryId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints foreignKeyName="fk_item_username" references="users(username)" deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
