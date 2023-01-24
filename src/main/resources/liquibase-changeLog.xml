@@ -6,7 +6,21 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-    <changeSet id="V1__CREATE_USER_TABLE" author="redfueltank">
+    <changeSet id="V1__CREATE_DIRECTORY_TABLE" author="redfueltank">
+        <createTable tableName="directory">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="upperId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="V2__CREATE_USER_TABLE" author="redfueltank">
         <createTable tableName="users">
             <column name="username" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -20,6 +34,9 @@
             <column name="credit" type="double">
                 <constraints nullable="false"/>
             </column>
+            <column name="rootDirectoryId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <createTable tableName="authorities">
             <column name="username" type="varchar(50)">
@@ -31,12 +48,18 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="V2__ADD_USER" author="redfueltank">
+    <changeSet id="V3__ADD_USER" author="redfueltank">
+        <insert tableName="directory">
+            <column name="id" value="1"/>
+            <column name="upperId" value="-1"/>
+            <column name="name" value="user test root directory"/>
+        </insert>
         <insert tableName="Users">
             <column name="username" value="user"/>
             <column name="password" value="$2a$10$rDhr28yT2X26mqQVytCJUOti9k6Ry16i3HSWM.vLZ8zMQQl1SqyO2"/>
             <column name="enabled" value="true"/>
             <column name="credit" value="0.0"/>
+            <column name="rootDirectoryId" value="1"/>
         </insert>
         <insert tableName="Authorities">
             <column name="username" value="user"/>
@@ -44,12 +67,18 @@
         </insert>
     </changeSet>
 
-    <changeSet id="V3__ADD_ADMIN" author="redfueltank">
+    <changeSet id="V4__ADD_ADMIN" author="redfueltank">
+        <insert tableName="directory">
+            <column name="id" value="2"/>
+            <column name="upperId" value="-1"/>
+            <column name="name" value="admin test root directory"/>
+        </insert>
         <insert tableName="Users">
             <column name="username" value="admin"/>
             <column name="password" value="$2a$10$piVu2FK65CZJz8GqgFVjxuer8N9dlxpP9kgKr9uiN6eD8hKE4Amhi"/>
             <column name="enabled" value="true"/>
             <column name="credit" value="1.0"/>
+            <column name="rootDirectoryId" value="2"/>
         </insert>
         <insert tableName="Authorities">
             <column name="username" value="admin"/>
@@ -57,34 +86,23 @@
         </insert>
     </changeSet>
 
-    <changeSet id="V4__ADD_SECOND_USER" author="redfueltank">
+    <changeSet id="V5__ADD_SECOND_USER" author="redfueltank">
+        <insert tableName="directory">
+            <column name="id" value="3"/>
+            <column name="upperId" value="-1"/>
+            <column name="name" value="netgroup user test root directory"/>
+        </insert>
         <insert tableName="Users">
             <column name="username" value="netgroup"/>
             <column name="password" value="$2a$10$zXV6fycDMHY3JJXIwl/47u0N5rdEPsTmMXmB3Cl1o6qcv0Ovztgpi"/>
             <column name="enabled" value="true"/>
             <column name="credit" value="2.5"/>
+            <column name="rootDirectoryId" value="3"/>
         </insert>
         <insert tableName="Authorities">
             <column name="username" value="netgroup"/>
             <column name="authority" value="USER"/>
         </insert>
-    </changeSet>
-
-    <changeSet id="V5__CREATE_DIRECTORY_TABLE" author="redfueltank">
-        <createTable tableName="directory">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="upperId" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="username" type="varchar(255)">
-                <constraints foreignKeyName="fk_directory_username" references="users(username)" deleteCascade="true"/>
-            </column>
-            <column name="name" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
     </changeSet>
 
     <changeSet id="V6__CREATE_ITEM_TABLE" author="redfueltank">
@@ -97,9 +115,6 @@
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
-            </column>
-            <column name="username" type="varchar(255)">
-                <constraints foreignKeyName="fk_item_username" references="users(username)" deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

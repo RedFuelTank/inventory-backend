@@ -19,9 +19,6 @@ public class Directory {
     @Column(name = "upperId")
     private Long upperId;
 
-    @Column(name = "username")
-    private String username;
-
     @Column(name = "name")
     private String name;
 }

@@ -19,9 +19,6 @@ public class Item {
     @Column(name = "directoryId")
     private Long directoryId;
 
-    @Column(name = "username")
-    private String username;
-
     @Column(name = "name")
     private String name;
 }
