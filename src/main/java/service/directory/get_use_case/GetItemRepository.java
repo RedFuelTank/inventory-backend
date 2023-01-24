@@ -7,6 +7,4 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface GetItemRepository extends PagingAndSortingRepository<Item, Long> {
     Page<Item> getAllByDirectoryId(Long id, Pageable pageable);
-
-    Page<Item> getAllByDirectoryIdAndUsername(Long id, String username, Pageable pageable);
 }

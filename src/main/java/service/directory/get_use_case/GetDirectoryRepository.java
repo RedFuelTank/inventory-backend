@@ -8,9 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GetDirectoryRepository extends PagingAndSortingRepository<Directory, Long> {
-    Page<Directory> getAllByUpperIdAndUsername(Long id, String username, Pageable pageable);
     Page<Directory> getAllByUpperId(Long upperId, Pageable pageable);
-    default Long getRootUpperId() {
-        return -1L;
-    };
 }
