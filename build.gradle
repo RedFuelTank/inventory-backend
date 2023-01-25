@@ -21,7 +21,7 @@ def hsqldbDriverVersion = '2.7.1'
 def liquibaseVersion = "4.19.0"
 def springDataJpaVersion = "3.0.1"
 def log4jVersion = "2.19.0"
-
+def jjwtVersion = "0.11.5"
 
 dependencies {
     // Jupiter
@@ -57,6 +57,10 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
     implementation "org.apache.logging.log4j:log4j-api:$log4jVersion"
 
+    // JJWT
+    implementation "io.jsonwebtoken:jjwt-impl:$jjwtVersion"
+    implementation "io.jsonwebtoken:jjwt-api:$jjwtVersion"
+    implementation "io.jsonwebtoken:jjwt-jackson:$jjwtVersion"
 }
 
 test {
