@@ -10,6 +10,7 @@ import lombok.Setter;
 public abstract class EntityDto {
     private final EntityType type;
     private final String name;
+    private final String username;
 
     public enum EntityType {
         DIRECTORY,

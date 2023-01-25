@@ -10,7 +10,7 @@ import service.mapper.Mapper;
 public class DirectoryMapper implements Mapper<DirectoryDto, Directory> {
     @Override
     public DirectoryDto toDto(Directory directory) {
-        return new DirectoryDto(directory.getName());
+        return new DirectoryDto(directory.getName(), directory.getUser().getUsername());
     }
 
     @Override

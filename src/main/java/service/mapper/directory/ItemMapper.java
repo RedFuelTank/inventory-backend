@@ -10,7 +10,7 @@ import service.mapper.Mapper;
 public class ItemMapper implements Mapper<ItemDto, Item> {
     @Override
     public ItemDto toDto(Item item) {
-        return new ItemDto(item.getName());
+        return new ItemDto(item.getName(), item.getUser().getUsername());
     }
 
     @Override

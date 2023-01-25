@@ -6,8 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ItemDto extends EntityDto {
-    private String date = "Today";
-    public ItemDto(String name) {
-        super(EntityType.FILE, name);
+    public ItemDto(String name, String username) {
+        super(EntityType.FILE, name, username);
     }
 }

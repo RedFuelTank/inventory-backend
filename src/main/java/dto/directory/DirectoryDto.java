@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DirectoryDto extends EntityDto {
-    public DirectoryDto(String name) {
-        super(EntityType.DIRECTORY, name);
+    public DirectoryDto(String name, String username) {
+        super(EntityType.DIRECTORY, name, username);
     }
 }
