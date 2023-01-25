@@ -16,8 +16,4 @@ public class User {
 
     @Column(name = "credit")
     private Double credit;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "rootDirectoryId")
-    private Directory rootDirectory;
 }
