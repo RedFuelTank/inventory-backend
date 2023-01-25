@@ -5,10 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 
+import java.util.Optional;
+
 public interface GetDirectoryService {
     @PreAuthorize("#username == authentication.name")
-    Page<EntityDto> getUserDirectoryByIdContent(String username, Long id, Pageable pageable);
-
-    @PreAuthorize("#username == authentication.name")
-    Page<EntityDto> getUserRootDirectories(String username, Pageable pageable);
+    Page<EntityDto> getUserDirectoryByIdContent(String username, Optional<Long> id, Pageable pageable);
 }

@@ -17,11 +17,11 @@ public class GetDirectoryController {
 
     @GetMapping("{username}/directory")
     public Page<EntityDto> getUserRootDirectories(@PathVariable String username, Pageable pageable) {
-        return service.getUserRootDirectories(username, pageable);
+        return service.getUserDirectoryByIdContent(username, Optional.empty(), pageable);
     }
 
     @GetMapping("{username}/directory/{id}")
     public Page<EntityDto> getUserSubDirectoriesByParentId(@PathVariable String username, @PathVariable Long id, Pageable pageable) {
-        return service.getUserDirectoryByIdContent(username, id, pageable);
+        return service.getUserDirectoryByIdContent(username, Optional.of(id), pageable);
     }
 }
