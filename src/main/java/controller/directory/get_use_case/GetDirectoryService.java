@@ -7,8 +7,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 public interface GetDirectoryService {
     @PreAuthorize("#username == authentication.name")
-    Page<EntityDto> getUserRootDirectoryContent(String username, Pageable pageable);
+    Page<EntityDto> getUserDirectoryByIdContent(String username, Long id, Pageable pageable);
 
     @PreAuthorize("#username == authentication.name")
-    Page<EntityDto> getUserDirectoryByIdContent(String username, Long id, Pageable pageable);
+    Page<EntityDto> getUserRootDirectories(String username, Pageable pageable);
 }
