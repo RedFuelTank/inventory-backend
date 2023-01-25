@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class AddDirectoryController {
     private final AddDirectoryService service;
 
-    @PostMapping("{username}/directory/root")
+    @PostMapping("{username}/directory/create-directory")
     public EntityDto addUserRootDirectorySubDirectory(@PathVariable String username, @RequestBody DirectoryDto directoryDto) {
-        return service.addUserRootDirectorySubDirectory(username, directoryDto);
+        return service.addUserRootDirectory(username, directoryDto);
     }
 
-    @PostMapping("{username}/directory/root")
+    @PostMapping("{username}/directory/{id}/create-directory")
+    public EntityDto addUserParentDirectoryByIdSubDirectory(@PathVariable String username, @PathVariable Long id, @RequestBody DirectoryDto directoryDto) {
+        return service.addUserDirectoryByIdSubDirectory(username, id, directoryDto);
+    }
+
+    @PostMapping("{username}/directory/create-item")
     public EntityDto addUserRootDirectorySubItem(@PathVariable String username, @RequestBody ItemDto itemDto) {
-        return service.addUserRootDirectorySubItem(username, itemDto);
+        return service.addUserItem(username, itemDto);
     }
 
-    @PostMapping("{username}/parent-directory/{id}/create-directory")
-    public EntityDto addUserParentDirectoryByIdDirectory(@PathVariable String username, @PathVariable Long id, @RequestBody DirectoryDto directoryDto) {
-        return service.addUserDirectoryById(username, id, directoryDto);
-    }
-
-    @PostMapping("{username}/parent-directory/{id}/create-item")
+    @PostMapping("{username}/directory/{id}/create-item")
     public EntityDto addUserParentDirectoryByIdItem(@PathVariable String username, @PathVariable Long id, @RequestBody ItemDto itemDto) {
-        return service.addUserParentDirectoryByIdItem(username, id, itemDto);
+        return service.addUserDirectoryByIdItem(username, id, itemDto);
     }
 }

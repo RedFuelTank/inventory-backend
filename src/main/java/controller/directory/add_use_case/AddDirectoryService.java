@@ -7,14 +7,14 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 public interface AddDirectoryService {
     @PreAuthorize("#username == authentication.name")
-    EntityDto addUserRootDirectorySubDirectory(String username, DirectoryDto directoryDto);
+    EntityDto addUserRootDirectory(String username, DirectoryDto directoryDto);
 
     @PreAuthorize("#username == authentication.name")
-    EntityDto addUserDirectoryById(String username, Long id, DirectoryDto directoryDto);
+    EntityDto addUserDirectoryByIdSubDirectory(String username, Long id, DirectoryDto directoryDto);
 
     @PreAuthorize("#username == authentication.name")
-    EntityDto addUserParentDirectoryByIdItem(String username, Long id, ItemDto itemDto);
+    EntityDto addUserDirectoryByIdItem(String username, Long id, ItemDto itemDto);
 
     @PreAuthorize("#username == authentication.name")
-    EntityDto addUserRootDirectorySubItem(String username, ItemDto itemDto);
+    EntityDto addUserItem(String username, ItemDto itemDto);
 }
