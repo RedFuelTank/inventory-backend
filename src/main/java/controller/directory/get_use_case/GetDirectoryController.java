@@ -22,6 +22,6 @@ public class GetDirectoryController {
 
     @GetMapping("{username}/directory/{id}")
     public Page<EntityDto> getUserSubDirectoriesByParentId(@PathVariable String username, @PathVariable Long id, Pageable pageable) {
-        return service.getUserDirectoryByIdContent(username, Optional.of(id), pageable);
+        return service.getUserDirectoryByIdContent(username, Optional.ofNullable(id), pageable);
     }
 }
