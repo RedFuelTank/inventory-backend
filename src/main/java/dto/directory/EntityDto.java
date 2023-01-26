@@ -1,16 +1,20 @@
 package dto.directory;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@RequiredArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class EntityDto {
-    private final EntityType type;
-    private final String name;
-    private final String username;
+    private Long id;
+    private EntityType type;
+    private String name;
+    private String username;
+    private Long parentDirectoryId;
 
     public enum EntityType {
         DIRECTORY,
