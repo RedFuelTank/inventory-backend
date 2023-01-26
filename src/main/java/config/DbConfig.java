@@ -6,13 +6,17 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:/application.properties")
+@EnableTransactionManagement
 @ComponentScan(basePackages = "config.database")
 public class DbConfig {
     @Value("${liquibase.changeLog-path}")
@@ -25,6 +29,13 @@ public class DbConfig {
         liquibase.setClearCheckSums(true);
         liquibase.setDataSource(dataSource);
         return liquibase;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(
+            EntityManagerFactory entityManagerFactory) {
+
+        return new JpaTransactionManager(entityManagerFactory);
     }
 
     @Bean
@@ -48,7 +59,7 @@ public class DbConfig {
         properties.setProperty("hibernate.dialect", dialect);
         properties.setProperty("hibernate.show_sql", "false");
         properties.setProperty("hibernate.format_sql", "true");
-        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
+//        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
 
         return properties;
     }
