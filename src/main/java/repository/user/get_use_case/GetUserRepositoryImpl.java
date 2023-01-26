@@ -1,4 +1,4 @@
-package repository.user;
+package repository.user.get_use_case;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
