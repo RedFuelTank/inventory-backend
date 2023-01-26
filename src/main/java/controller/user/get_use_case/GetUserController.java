@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GetUserController {
     private final GetUserService service;
 
-    @GetMapping("/{username}")
+    @GetMapping("user/{username}")
     public UserDto getUserByUsername(@PathVariable String username) {
         return service.getUserByUsername(username);
     }
