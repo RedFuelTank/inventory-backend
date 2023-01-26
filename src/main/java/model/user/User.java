@@ -3,7 +3,8 @@ package model.user;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import model.directory.Directory;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,6 +15,14 @@ public class User {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "credit")
     private Double credit;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "Authorities", joinColumns = @JoinColumn(name = "username"))
+    @Column(name = "authority")
+    private List<String> authorities;
 }
