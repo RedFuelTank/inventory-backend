@@ -1,15 +1,14 @@
 package model.directory;
 
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import model.user.User;
 
 @Entity
 @Getter
 @Setter
-@Transactional
 @Table(name = "item")
 public class Item {
     @Id
@@ -21,9 +20,11 @@ public class Item {
     private Long directoryId;
 
     @Column(name = "name")
+    @NonNull
     private String name;
 
     @OneToOne
     @JoinColumn(name = "username")
+    @NonNull
     private User user;
 }

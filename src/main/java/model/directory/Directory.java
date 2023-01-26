@@ -1,14 +1,12 @@
 package model.directory;
 
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
-import liquibase.ui.UIService;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import model.user.User;
 
 @Entity
-@Transactional
 @Setter
 @Getter
 @Table(name = "directory")
@@ -23,8 +21,10 @@ public class Directory {
 
     @OneToOne
     @JoinColumn(name = "username")
+    @NonNull
     private User user;
 
     @Column(name = "name")
+    @NonNull
     private String name;
 }
