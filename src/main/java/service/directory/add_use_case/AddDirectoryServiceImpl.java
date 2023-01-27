@@ -43,6 +43,7 @@ public class AddDirectoryServiceImpl implements AddDirectoryService {
         unit.setId(savedItem.getId());
         unit.setUser(user);
         unit.setName(savedItem.getName());
+        unit.setItem(savedItem);
         unit.setStartDate(startDate);
 
         statisticsRepository.save(unit);

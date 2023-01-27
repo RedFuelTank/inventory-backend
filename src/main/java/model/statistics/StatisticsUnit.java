@@ -3,6 +3,7 @@ package model.statistics;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import model.directory.Item;
 import model.user.User;
 
 @Entity
@@ -19,6 +20,10 @@ public class StatisticsUnit {
     @OneToOne
     @JoinColumn(name = "username")
     private User user;
+
+    @OneToOne
+    @JoinColumn(name = "itemId")
+    private Item item;
 
     @Column(name = "startDate")
     private Long startDate;
