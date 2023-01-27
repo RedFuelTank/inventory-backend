@@ -4,5 +4,5 @@ import model.directory.Directory;
 
 public interface AddDirectoryRepository {
 
-    Directory save(Directory toEntity);
+    Directory save(Directory directory);
 }
