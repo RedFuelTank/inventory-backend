@@ -15,4 +15,9 @@ public class GetUserController {
     public UserDto getUserByUsername(@PathVariable String username) {
         return service.getUserByUsername(username);
     }
+
+    @GetMapping("user/{username}/credit")
+    public double getCreditByUsername(@PathVariable String username) {
+        return service.getCreditByUsername(username);
+    }
 }

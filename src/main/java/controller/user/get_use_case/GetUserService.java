@@ -6,4 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 public interface GetUserService {
     @PreAuthorize("#username == authentication.name")
     UserDto getUserByUsername(String username);
+
+    @PreAuthorize("#username == authentication.name")
+    double getCreditByUsername(String username);
 }

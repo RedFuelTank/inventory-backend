@@ -19,4 +19,15 @@ public class GetUserServiceImpl implements GetUserService {
                 repository.getUserByUsername(username)
         );
     }
+
+    @Override
+    public double getCreditByUsername(String username) {
+        User user = repository.getUserByUsername(username);
+        int diff;
+
+        if ((diff = user.getExistingNumberItems() - user.getAvailableNumberItems()) > 0) {
+            return diff * 0.01;
+        }
+        return 0;
+    }
 }
