@@ -58,9 +58,4 @@ public class AddDirectoryServiceImpl implements AddDirectoryService {
         ));
     }
 
-    @Override
-    public void setItemPicture(String username, Long id, MultipartFile file) throws IOException {
-        itemRepository.setPicture(id, file);
-    }
-
 }
