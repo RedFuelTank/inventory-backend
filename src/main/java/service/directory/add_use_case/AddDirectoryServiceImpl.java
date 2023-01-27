@@ -4,25 +4,36 @@ import controller.directory.add_use_case.AddDirectoryService;
 import dto.directory.DirectoryDto;
 import dto.directory.EntityDto;
 import dto.directory.ItemDto;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import model.directory.Directory;
 import model.directory.Item;
+import model.user.User;
 import org.springframework.stereotype.Service;
 import service.mapper.Mapper;
+import service.user.get_use_case.GetUserRepository;
+
+import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
 public class AddDirectoryServiceImpl implements AddDirectoryService {
     private final AddDirectoryRepository directoryRepository;
+    private final GetUserRepository userRepository;
     private final AddItemRepository itemRepository;
     private final Mapper<DirectoryDto, Directory> directoryMapper;
     private final Mapper<ItemDto, Item> itemMapper;
 
     @Override
+    @Transactional
     public EntityDto addUserItem(ItemDto itemDto) {
-        return itemMapper.toDto(itemRepository.save(
-                itemMapper.toEntity(itemDto)
-        ));
+        Item savedItem = itemRepository.save(
+                itemMapper.toEntity(itemDto));
+
+        User user = userRepository.getUserByUsername(itemDto.getUsername());
+        user.setExistingNumberItems(user.getExistingNumberItems() + 1);
+
+        return itemMapper.toDto(savedItem);
     }
 
     @Override
