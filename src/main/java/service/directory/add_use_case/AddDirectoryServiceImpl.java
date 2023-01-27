@@ -8,9 +8,12 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import model.directory.Directory;
 import model.directory.Item;
+import model.statistics.StatisticsUnit;
 import model.user.User;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import service.mapper.Mapper;
+import service.statistics.add_use_case.AddStatisticsRepository;
 import service.user.get_use_case.GetUserRepository;
 
 import java.io.IOException;
@@ -19,6 +22,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AddDirectoryServiceImpl implements AddDirectoryService {
     private final AddDirectoryRepository directoryRepository;
+    private final AddStatisticsRepository statisticsRepository;
     private final GetUserRepository userRepository;
     private final AddItemRepository itemRepository;
     private final Mapper<DirectoryDto, Directory> directoryMapper;
@@ -33,6 +37,16 @@ public class AddDirectoryServiceImpl implements AddDirectoryService {
         User user = userRepository.getUserByUsername(itemDto.getUsername());
         user.setExistingNumberItems(user.getExistingNumberItems() + 1);
 
+        Long startDate = System.currentTimeMillis();
+        StatisticsUnit unit = new StatisticsUnit();
+
+        unit.setId(savedItem.getId());
+        unit.setUser(user);
+        unit.setName(savedItem.getName());
+        unit.setStartDate(startDate);
+
+        statisticsRepository.save(unit);
+
         return itemMapper.toDto(savedItem);
     }
 
@@ -41,6 +55,11 @@ public class AddDirectoryServiceImpl implements AddDirectoryService {
         return directoryMapper.toDto(directoryRepository.save(
                 directoryMapper.toEntity(directoryDto)
         ));
+    }
+
+    @Override
+    public void setItemPicture(String username, Long id, MultipartFile file) throws IOException {
+        itemRepository.setPicture(id, file);
     }
 
 }
