@@ -133,4 +133,18 @@
                                  referencedTableName="Item"
                                  referencedColumnNames="id" onDelete="SET NULL"/>
     </changeSet>
+
+    <changeSet id="V8__CREATE_IMAGES_TABLE" author="redfueltank">
+        <createTable tableName="Images">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="itemId" type="bigint">
+                <constraints foreignKeyName="fk_image_item_id" references="item(id)" deleteCascade="true" unique="true"/>
+            </column>
+            <column name="itemPicture" type="blob">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
