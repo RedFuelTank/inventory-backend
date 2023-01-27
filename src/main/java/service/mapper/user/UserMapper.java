@@ -13,7 +13,6 @@ public class UserMapper implements Mapper<UserDto, User> {
     public UserDto toDto(User user) {
         UserDto userDto = new UserDto();
         userDto.setUsername(user.getUsername());
-        userDto.setCredit(user.getCredit());
         userDto.setAuthorities(user.getAuthorities().stream().map(Authorities::valueOf).toList());
         return userDto;
     }

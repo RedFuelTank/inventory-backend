@@ -17,7 +17,10 @@
             <column name="enabled" type="boolean">
                 <constraints nullable="false"/>
             </column>
-            <column name="credit" type="double">
+            <column name="availableNumberItems" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="existingNumberItems" type="int">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -36,7 +39,8 @@
             <column name="username" value="user"/>
             <column name="password" value="$2a$10$rDhr28yT2X26mqQVytCJUOti9k6Ry16i3HSWM.vLZ8zMQQl1SqyO2"/>
             <column name="enabled" value="true"/>
-            <column name="credit" value="0.0"/>
+            <column name="availableNumberItems" value="10"/>
+            <column name="existingNumberItems" value="0"/>
         </insert>
         <insert tableName="Authorities">
             <column name="username" value="user"/>
@@ -49,7 +53,8 @@
             <column name="username" value="admin"/>
             <column name="password" value="$2a$10$piVu2FK65CZJz8GqgFVjxuer8N9dlxpP9kgKr9uiN6eD8hKE4Amhi"/>
             <column name="enabled" value="true"/>
-            <column name="credit" value="1.0"/>
+            <column name="availableNumberItems" value="10"/>
+            <column name="existingNumberItems" value="0"/>
         </insert>
         <insert tableName="Authorities">
             <column name="username" value="admin"/>
@@ -62,7 +67,8 @@
             <column name="username" value="netgroup"/>
             <column name="password" value="$2a$10$zXV6fycDMHY3JJXIwl/47u0N5rdEPsTmMXmB3Cl1o6qcv0Ovztgpi"/>
             <column name="enabled" value="true"/>
-            <column name="credit" value="2.5"/>
+            <column name="availableNumberItems" value="10"/>
+            <column name="existingNumberItems" value="0"/>
         </insert>
         <insert tableName="Authorities">
             <column name="username" value="netgroup"/>
@@ -101,6 +107,7 @@
             <column name="username" type="varchar(255)">
                 <constraints foreignKeyName="fk_item_username" references="users(username)" deleteCascade="true"/>
             </column>
+            <column name="itemPicture" type="blob"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

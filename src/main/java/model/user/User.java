@@ -21,8 +21,11 @@ public class User {
     @Column(name = "enabled")
     private boolean enabled;
 
-    @Column(name = "credit")
-    private double credit;
+    @Column(name = "availableNumberItems")
+    private int availableNumberItems = 10;
+
+    @Column(name = "existingNumberItems")
+    private int existingNumberItems;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "Authorities", joinColumns = @JoinColumn(name = "username"))
