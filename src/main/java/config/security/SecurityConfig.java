@@ -47,6 +47,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests()
                 .requestMatchers("/hello").permitAll()
+                .requestMatchers("/user/registration").permitAll()
                 .requestMatchers("/**").authenticated();
 
         return http.build();
