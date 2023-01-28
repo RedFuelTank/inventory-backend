@@ -15,8 +15,8 @@ public interface GetStatisticsRepository extends JpaRepository<StatisticsUnit, L
                                              @Param("to") Long to,
                                              Pageable pageable);
 
-    @Query(value = "select o from StatisticsUnit o where o.user.username = :username and o.startDate >= :from and o.endDate = null")
-    Page<StatisticsUnit> getActualItems(@Param("username") String username,
-                                        @Param("from") Long from,
-                                        Pageable pageable);
+    @Query(value = "select o from StatisticsUnit o where o.user.username = :username and o.startDate >= :from")
+    Page<StatisticsUnit> getStatisticsFrom(@Param("username") String username,
+                                             @Param("from") Long from,
+                                             Pageable pageable);
 }

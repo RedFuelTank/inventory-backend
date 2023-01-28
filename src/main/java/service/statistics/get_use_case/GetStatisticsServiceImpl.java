@@ -22,7 +22,7 @@ public class GetStatisticsServiceImpl implements GetStatisticsService {
     @Override
     public Page<StatisticsUnitDto> getStatisticsFromTo(String username, Long from, Optional<Long> to, Pageable pageable) {
         List<StatisticsUnit> units = to.map(aLong -> repository.getStatisticsFromTo(username, from, aLong, pageable).getContent())
-                .orElseGet(() -> repository.getActualItems(username, from, pageable).getContent());
+                .orElseGet(() -> repository.getStatisticsFrom(username, from, pageable).getContent());
         List<StatisticsUnitDto> unitDtos = units.stream().map(statisticsMapper::toDto).toList();
         return new PageImpl<>(unitDtos);
     }
