@@ -22,6 +22,7 @@ def liquibaseVersion = "4.19.0"
 def springDataJpaVersion = "3.0.1"
 def log4jVersion = "2.19.0"
 def jjwtVersion = "0.11.5"
+def hibernateValidatorVersion = '8.0.0.Final'
 
 dependencies {
     // Jupiter
@@ -61,6 +62,9 @@ dependencies {
     implementation "io.jsonwebtoken:jjwt-impl:$jjwtVersion"
     implementation "io.jsonwebtoken:jjwt-api:$jjwtVersion"
     implementation "io.jsonwebtoken:jjwt-jackson:$jjwtVersion"
+
+    // Hibernate Validator
+    implementation "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
 }
 
 test {
