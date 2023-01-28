@@ -25,8 +25,8 @@ public class DeleteDirectoryServiceImpl implements DeleteDirectoryService {
 
     @Override
     public ItemDto deleteUserItem(String username, Long id) {
-        ItemDto itemDto = itemMapper.toDto(directoryRepository.deleteUserItem(username, id));
         editStatisticsRepository.setEndDate(id, System.currentTimeMillis());
+        ItemDto itemDto = itemMapper.toDto(directoryRepository.deleteUserItem(username, id));
 
         return itemDto;
     }
