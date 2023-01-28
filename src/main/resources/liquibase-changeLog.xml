@@ -122,7 +122,9 @@
             <column name="username" type="varchar(255)">
                 <constraints foreignKeyName="fk_statistics_username" references="users(username)" deleteCascade="true"/>
             </column>
-            <column name="itemId" type="bigint"/>
+            <column name="itemId" type="bigint" >
+                <constraints unique="true"/>
+            </column>
             <column name="startDate" type="bigint">
                 <constraints nullable="false"/>
             </column>
