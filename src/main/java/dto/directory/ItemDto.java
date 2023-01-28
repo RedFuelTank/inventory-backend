@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ItemDto extends EntityDto {
     public ItemDto(Long id, String name, String username, Long parentDirectoryId) {
-        super(id, EntityType.FILE, name, username, parentDirectoryId);
+        super(id, EntityType.ITEM, name, username, parentDirectoryId);
     }
 }

@@ -26,6 +26,6 @@ public abstract class EntityDto {
 
     public enum EntityType {
         DIRECTORY,
-        FILE
+        ITEM
     }
 }
