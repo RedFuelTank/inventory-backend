@@ -81,10 +81,13 @@ public class SecurityConfig {
 
     public static void main(String[] args) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(SecurityConfig.ENCRYPTION_STRENGTH);
-        String userPassword = encoder.encode("user");
-        System.out.printf("User password: %s\n", userPassword);
+//        String userPassword = encoder.encode("user");
+//        System.out.printf("User password: %s\n", userPassword);
+//
+//        String adminPassword = encoder.encode("admin");
+//        System.out.printf("Admin password: %s\n", adminPassword);
 
-        String adminPassword = encoder.encode("admin");
-        System.out.printf("Admin password: %s\n", adminPassword);
+        String netgroupPassword = encoder.encode("netgroup");
+        System.out.printf("NetGroup password: %s\n", netgroupPassword);
     }
 }

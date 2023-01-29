@@ -65,7 +65,7 @@
     <changeSet id="V4__ADD_SECOND_USER" author="redfueltank">
         <insert tableName="Users">
             <column name="username" value="netgroup"/>
-            <column name="password" value="$2a$10$zXV6fycDMHY3JJXIwl/47u0N5rdEPsTmMXmB3Cl1o6qcv0Ovztgpi"/>
+            <column name="password" value="$2a$10$32ALP2S/6JIwkZfOXhiVkuETcqbhLih/OO/4.bimU6G3h9VQDo45O"/>
             <column name="enabled" value="true"/>
             <column name="availableNumberItems" value="10"/>
             <column name="existingNumberItems" value="0"/>
