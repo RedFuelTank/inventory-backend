@@ -10,6 +10,24 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionAdvice {
     @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponseEntity onException(NotFoundException exception) {
+        return new ErrorResponseEntity(
+                exception.getClass().getSimpleName(),
+                exception.getMessage()
+        );
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponseEntity onException(DataAlreadyExistsException exception) {
+        return new ErrorResponseEntity(
+                exception.getClass().getSimpleName(),
+                exception.getMessage()
+        );
+    }
+
+    @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ValidationErrors validate(MethodArgumentNotValidException exception) {
         var fields = exception.getBindingResult().getFieldErrors();
