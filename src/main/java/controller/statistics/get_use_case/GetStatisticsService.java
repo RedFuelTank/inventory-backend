@@ -9,6 +9,6 @@ import java.util.Date;
 import java.util.Optional;
 
 public interface GetStatisticsService {
-    @PreAuthorize("#username == authentication.name")
+    @PreAuthorize("#username == authentication.name or hasAuthority('ADMIN')")
     Page<StatisticsUnitDto> getStatisticsFromTo(String username, Date from, Optional<Date> to, Pageable pageable);
 }
