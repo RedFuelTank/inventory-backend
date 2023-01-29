@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import service.mapper.Mapper;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +21,8 @@ public class GetStatisticsServiceImpl implements GetStatisticsService {
     private final Mapper<StatisticsUnitDto, StatisticsUnit> statisticsMapper;
 
     @Override
-    public Page<StatisticsUnitDto> getStatisticsFromTo(String username, Long from, Optional<Long> to, Pageable pageable) {
-        List<StatisticsUnit> units = to.map(aLong -> repository.getStatisticsFromTo(username, from, aLong, pageable).getContent())
+    public Page<StatisticsUnitDto> getStatisticsFromTo(String username, Date from, Optional<Date> toOptional, Pageable pageable) {
+        List<StatisticsUnit> units = toOptional.map(to -> repository.getStatisticsFromTo(username, from, to, pageable).getContent())
                 .orElseGet(() -> repository.getStatisticsFrom(username, from, pageable).getContent());
         List<StatisticsUnitDto> unitDtos = units.stream().map(statisticsMapper::toDto).toList();
         return new PageImpl<>(unitDtos);

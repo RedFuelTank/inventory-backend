@@ -11,12 +11,11 @@ import model.directory.Item;
 import model.statistics.StatisticsUnit;
 import model.user.User;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import service.mapper.Mapper;
 import service.statistics.add_use_case.AddStatisticsRepository;
 import service.user.get_use_case.GetUserRepository;
 
-import java.io.IOException;
+import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
@@ -37,14 +36,13 @@ public class AddDirectoryServiceImpl implements AddDirectoryService {
         User user = userRepository.getUserByUsername(itemDto.getUsername());
         user.setExistingNumberItems(user.getExistingNumberItems() + 1);
 
-        Long startDate = System.currentTimeMillis();
         StatisticsUnit unit = new StatisticsUnit();
 
         unit.setId(savedItem.getId());
         unit.setUser(user);
         unit.setName(savedItem.getName());
         unit.setItem(savedItem);
-        unit.setStartDate(startDate);
+        unit.setStartDate(new Date());
 
         statisticsRepository.save(unit);
 

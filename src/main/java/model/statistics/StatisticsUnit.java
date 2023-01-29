@@ -6,6 +6,8 @@ import lombok.Setter;
 import model.directory.Item;
 import model.user.User;
 
+import java.util.Date;
+
 @Entity
 @Getter
 @Setter
@@ -26,9 +28,11 @@ public class StatisticsUnit {
     private Item item;
 
     @Column(name = "startDate")
-    private Long startDate;
+    @Temporal(TemporalType.DATE)
+    private Date startDate;
 
     @Column(name = "endDate")
-    private Long endDate;
+    @Temporal(TemporalType.DATE)
+    private Date endDate;
 
 }

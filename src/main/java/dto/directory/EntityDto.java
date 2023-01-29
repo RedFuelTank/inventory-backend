@@ -15,7 +15,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public abstract class EntityDto {
     private Long id;
-    @NotNull
     private EntityType type;
     @NotNull
     @Size(min = 1)

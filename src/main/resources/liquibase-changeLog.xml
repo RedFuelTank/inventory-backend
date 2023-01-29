@@ -125,10 +125,10 @@
             <column name="itemId" type="bigint" >
                 <constraints unique="true"/>
             </column>
-            <column name="startDate" type="bigint">
+            <column name="startDate" type="date">
                 <constraints nullable="false"/>
             </column>
-            <column name="endDate" type="bigint"/>
+            <column name="endDate" type="date"/>
         </createTable>
         <addForeignKeyConstraint baseTableName="Statistics" baseColumnNames="itemId"
                                  constraintName="fk_statistics_item_id"
