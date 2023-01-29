@@ -1,5 +1,6 @@
 package dto.directory;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -14,6 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public abstract class EntityDto {
     private Long id;
+    @NotNull
     private EntityType type;
     @NotNull
     @Size(min = 1)
