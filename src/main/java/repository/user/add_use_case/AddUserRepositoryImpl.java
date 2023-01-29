@@ -2,6 +2,7 @@ package repository.user.add_use_case;
 
 import dto.user.Authorities;
 import dto.user.RegistrationDto;
+import exception.DataAlreadyExistsException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -22,13 +23,25 @@ public class AddUserRepositoryImpl implements AddUserRepository {
     public User register(RegistrationDto registrationDto) {
         User user = new User();
 
-        user.setUsername(registrationDto.getUsername());
-        user.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
-        user.setEnabled(true);
+        if (isExistingUser(user)) {
+            throw new DataAlreadyExistsException(
+                    String.format("User with username (%s) already exists", registrationDto.getUsername())
+            );
+        }
+
+        User newUser = new User();
+
+        newUser.setUsername(registrationDto.getUsername());
+        newUser.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
+        newUser.setEnabled(true);
         user.setAuthorities(
                 registrationDto.getAuthorities().stream().map(Authorities::toString).toList()
         );
-        manager.persist(user);
-        return user;
+        manager.persist(newUser);
+        return newUser;
+    }
+
+    private static boolean isExistingUser(User user) {
+        return user != null;
     }
 }
