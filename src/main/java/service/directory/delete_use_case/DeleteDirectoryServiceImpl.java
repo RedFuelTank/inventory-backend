@@ -9,12 +9,14 @@ import model.directory.Item;
 import org.springframework.stereotype.Service;
 import service.mapper.Mapper;
 import service.statistics.edit_use_case.EditStatisticsRepository;
+import service.user.edit_use_case.EditUserRepository;
 
 @Service
 @RequiredArgsConstructor
 public class DeleteDirectoryServiceImpl implements DeleteDirectoryService {
     private final DeleteDirectoryRepository directoryRepository;
-    private final EditStatisticsRepository editStatisticsRepository;
+    private final EditUserRepository userRepository;
+    private final EditStatisticsRepository statisticsRepository;
     private final Mapper<DirectoryDto, Directory> directoryMapper;
     private final Mapper<ItemDto, Item> itemMapper;
 
@@ -25,7 +27,8 @@ public class DeleteDirectoryServiceImpl implements DeleteDirectoryService {
 
     @Override
     public ItemDto deleteUserItem(String username, Long id) {
-        editStatisticsRepository.setOutdated(id);
+        statisticsRepository.setOutdated(id);
+        userRepository.decrementExistingItems(username);
 
         return itemMapper.toDto(directoryRepository.deleteUserItem(username, id));
     }
