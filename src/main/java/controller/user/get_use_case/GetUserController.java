@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class GetUserController {
     private final GetUserService service;
 
-    @GetMapping("user/{username}")
+    @GetMapping("{username}")
     public UserDto getUserByUsername(@PathVariable String username) {
         return service.getUserByUsername(username);
     }
 
-    @GetMapping("user/{username}/credit")
+    @GetMapping("{username}/credit")
     public double getCreditByUsername(@PathVariable String username) {
         return service.getCreditByUsername(username);
     }
