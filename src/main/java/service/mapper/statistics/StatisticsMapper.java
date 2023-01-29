@@ -13,6 +13,7 @@ public class StatisticsMapper implements Mapper<StatisticsUnitDto, StatisticsUni
 
         dto.setId(entity.getId());
         dto.setName(entity.getName());
+        dto.setUsername(entity.getUser().getUsername());
         dto.setStartDate(entity.getStartDate());
         dto.setEndDate(entity.getEndDate());
 
