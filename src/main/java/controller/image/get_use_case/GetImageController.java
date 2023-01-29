@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GetImageController {
     private final GetImageService service;
 
-    @GetMapping(value = "user/{username}/item/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
+    @GetMapping(value = "/{username}/item/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getItemImageByUsername(@PathVariable String username,
                                      @PathVariable Long id) {
         return service.getItemImageByUsername(username, id);

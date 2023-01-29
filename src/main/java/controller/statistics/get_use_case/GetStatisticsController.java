@@ -19,7 +19,7 @@ import java.util.Optional;
 public class GetStatisticsController {
     private final GetStatisticsService service;
 
-    @GetMapping("/user/{username}/statistics")
+    @GetMapping("/{username}/statistics")
     public Page<StatisticsUnitDto> getStatisticsFromTo(@PathVariable String username,
                                                        @RequestParam @DateTimeFormat(
                                                                pattern = "yyyy-mm-DD"
